@@ -1,0 +1,47 @@
+.commentaryCard--container {
+	max-width: 700px;
+	min-width: 350px;
+
+	background-color: beige;
+
+	border: 1px solid #000;
+	border-radius: 12px;
+
+	.commentaryCard--header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 8px 16px 4px 16px;
+
+		.autor--post {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+		}
+	}
+
+	.commentaryCard--body {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		padding: 4px 16px;
+
+		.commentary--title {
+			padding: 4px 0;
+		}
+		.commentary--content {
+			padding: 4px 0;
+		}
+	}
+
+	.commentaryCard--footer {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+
+		padding: 4px 16px 8px 16px;
+
+		border-top: 1px solid #000;
+	}
+}
