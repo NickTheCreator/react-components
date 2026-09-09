@@ -13,8 +13,8 @@ export default function PostCard() {
 				<p>Time stamp</p>
 			</div>
 			<div className="postCard--body">
-				<h1>{title}</h1>
-				<p>{description}</p>
+				<h1 className="post--title">{title}</h1>
+				<p className="post--content">{description}</p>
 			</div>
 			<div className="postCard--footer">
 				<p>&uArr;</p>
