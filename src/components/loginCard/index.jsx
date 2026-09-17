@@ -6,7 +6,7 @@ export default function LoginCard() {
 
 	let header = "Register in";
 
-	const [usuario, setUsuario] = useState({ USUARIOS });
+	const [usuario, setUsuario] = useState(USUARIOS);
 	const [username, setUsername] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -17,7 +17,7 @@ export default function LoginCard() {
 	};
 
 	const handleSubmit = function () {
-		checkPassword;
+		checkPassword();
 		const novoUsuario = {
 			username,
 			email,
@@ -55,8 +55,9 @@ export default function LoginCard() {
 							placeholder="Your username"
 							value={username}
 							onChange={(e) => {
-								setUsername("");
+								setUsername(e.target.value);
 							}}
+							required
 						/>
 					</div>
 					<div className="form--field">
@@ -74,8 +75,9 @@ export default function LoginCard() {
 							placeholder="Your email"
 							value={email}
 							onChange={(e) => {
-								setEmail("");
+								setEmail(e.target.value);
 							}}
+							required
 						/>
 					</div>
 					<div className="form--field">
@@ -91,10 +93,10 @@ export default function LoginCard() {
 							name="password"
 							className="form--input"
 							value={password}
-							required
 							onChange={(e) => {
-								setPassword("");
+								setPassword(e.target.value);
 							}}
+							required
 						/>
 					</div>
 					<div className="form--field">
@@ -110,15 +112,15 @@ export default function LoginCard() {
 							name="repeat-password"
 							className="form--input"
 							value={confirmPassword}
-							required
 							onChange={(e) => {
-								setConfirmPassowrd("");
+								setConfirmPassowrd(e.target.value);
 							}}
+							required
 						/>
 					</div>
 				</div>
 				<input
-					type="button"
+					type="submit"
 					value="submit"
 					className="ipt--form"
 				/>
