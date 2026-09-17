@@ -1,14 +1,16 @@
 import "../../styles/postCard.css";
 
-export default function PostCard() {
-	const title = "TITULO";
-	const description = "DESCRICAO";
+export default function PostCard({
+	author = "Nobody",
+	title = "lorem ipsum",
+	description = "mockup text",
+}) {
 	return (
 		<div className="postCard--container">
 			<div className="postCard--header">
 				<div className="autor--post">
 					<p>&#9675;</p>
-					<h2>Autor</h2>
+					<h2>{author}</h2>
 				</div>
 				<p>Time stamp</p>
 			</div>
