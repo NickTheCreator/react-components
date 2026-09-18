@@ -9,15 +9,33 @@ export default function LoginCard() {
 	const [usuario, setUsuario] = useState(USUARIOS);
 	const [username, setUsername] = useState("");
 	const [email, setEmail] = useState("");
+	const [emailError, setEmailError] = useState("");
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassowrd] = useState(password);
+	const [passwordError, setPasswordError] = useState("");
 
-	const checkPassword = function () {
-		if (confirmPassword == password) setConfirmPassowrd("");
+	const isValidPassword = function () {
+		return password === confirmPassword;
 	};
 
-	const handleSubmit = function () {
-		checkPassword();
+	const isValidEmail = function (email) {
+		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		return emailRegex.test(email);
+	};
+
+	const handleSubmit = function (e) {
+		e.preventDefault();
+
+		if (!isValidEmail(email)) {
+			setEmailError("O email esta incoreto");
+		}
+
+		if (!isValidPassword()) {
+			setPasswordError("A senha nao eh igual");
+			return;
+		}
+		setPasswordError("");
+
 		const novoUsuario = {
 			username,
 			email,
@@ -27,6 +45,8 @@ export default function LoginCard() {
 		setUsername("");
 		setEmail("");
 		setPassword("");
+		setConfirmPassowrd("");
+
 		console.log("fucionou");
 	};
 
@@ -79,6 +99,7 @@ export default function LoginCard() {
 							}}
 							required
 						/>
+						{emailError && <span>{emailError}</span>}
 					</div>
 					<div className="form--field">
 						<label
@@ -117,6 +138,7 @@ export default function LoginCard() {
 							}}
 							required
 						/>
+						{passwordError && <span>{passwordError}</span>}
 					</div>
 				</div>
 				<input
