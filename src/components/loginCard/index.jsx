@@ -1,8 +1,10 @@
 import { useState } from "react";
+import isValidEmail from "../../hooks/isValidEmail";
+import isValidPassword from "../../hooks/isValidPassword";
 import "../../styles/loginCard.css";
 
 export default function LoginCard() {
-	const USUARIOS = [{}];
+	const USUARIOS = [];
 
 	const [usuario, setUsuario] = useState(USUARIOS);
 	const [username, setUsername] = useState("");
@@ -11,15 +13,6 @@ export default function LoginCard() {
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState(password);
 	const [passwordError, setPasswordError] = useState("");
-
-	const isValidPassword = function () {
-		return password === confirmPassword;
-	};
-
-	const isValidEmail = function (email) {
-		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-		return emailRegex.test(email);
-	};
 
 	const handleSubmit = function (e) {
 		e.preventDefault();
@@ -30,7 +23,7 @@ export default function LoginCard() {
 		}
 		setEmailError("");
 
-		if (!isValidPassword()) {
+		if (!isValidPassword(password, confirmPassword)) {
 			setPasswordError("A senha nao eh igual");
 			return;
 		}
@@ -41,14 +34,17 @@ export default function LoginCard() {
 			email,
 			password,
 		};
-		localStorage.setItem("Usuario", JSON.stringify(novoUsuario)); // para salvar no localStorage
+		const usuariosAtualizados = [...usuario, novoUsuario]; // guardo em uma constante para conseguir utilizar os dados de forma atualizada
+		localStorage.setItem("Usuario", JSON.stringify(usuariosAtualizados)); // para salvar no localStorage
 
-		setUsuario([...usuario, novoUsuario]);
+		setUsuario(usuariosAtualizados);
+		console.log(usuariosAtualizados); // Logo no console o array com as informações atualizadas
+		// Como estava fazendo antes, logava no console o array nao atualizado (useState é asincrono)
+
 		setUsername("");
 		setEmail("");
 		setPassword("");
 		setConfirmPassword("");
-		console.log("fucionou");
 	};
 
 	return (
