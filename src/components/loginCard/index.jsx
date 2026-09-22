@@ -4,14 +4,12 @@ import "../../styles/loginCard.css";
 export default function LoginCard() {
 	const USUARIOS = [{}];
 
-	let header = "Register in";
-
 	const [usuario, setUsuario] = useState(USUARIOS);
 	const [username, setUsername] = useState("");
 	const [email, setEmail] = useState("");
 	const [emailError, setEmailError] = useState("");
 	const [password, setPassword] = useState("");
-	const [confirmPassword, setConfirmPassowrd] = useState(password);
+	const [confirmPassword, setConfirmPassword] = useState(password);
 	const [passwordError, setPasswordError] = useState("");
 
 	const isValidPassword = function () {
@@ -28,7 +26,9 @@ export default function LoginCard() {
 
 		if (!isValidEmail(email)) {
 			setEmailError("O email esta incoreto");
+			return;
 		}
+		setEmailError("");
 
 		if (!isValidPassword()) {
 			setPasswordError("A senha nao eh igual");
@@ -41,19 +41,20 @@ export default function LoginCard() {
 			email,
 			password,
 		};
+		localStorage.setItem("Usuario", JSON.stringify(novoUsuario)); // para salvar no localStorage
+
 		setUsuario([...usuario, novoUsuario]);
 		setUsername("");
 		setEmail("");
 		setPassword("");
-		setConfirmPassowrd("");
-
+		setConfirmPassword("");
 		console.log("fucionou");
 	};
 
 	return (
 		<div className="loginCard--container">
 			<div className="loginCard--header">
-				<h1 className="header--title">{header}</h1>
+				<h1 className="header--title">Register in</h1>
 			</div>
 			<form
 				onSubmit={handleSubmit}
@@ -134,7 +135,7 @@ export default function LoginCard() {
 							className="form--input"
 							value={confirmPassword}
 							onChange={(e) => {
-								setConfirmPassowrd(e.target.value);
+								setConfirmPassword(e.target.value);
 							}}
 							required
 						/>
