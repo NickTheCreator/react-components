@@ -1,7 +1,7 @@
 import { useState } from "react";
 import isValidEmail from "../../hooks/isValidEmail";
 import isValidPassword from "../../hooks/isValidPassword";
-import "../../styles/loginCard.css";
+import "./loginCard.css";
 
 export default function LoginCard() {
 	const USUARIOS = [];

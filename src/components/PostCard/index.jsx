@@ -1,4 +1,4 @@
-import "../../styles/postCard.css";
+import "./postCard.css";
 
 export default function PostCard({
 	author = "Nobody",

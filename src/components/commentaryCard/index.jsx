@@ -1,4 +1,3 @@
-import "../../styles/commentaryCard.css";
 import PostCard from "../PostCard";
 
 export default function CommentaryCard() {

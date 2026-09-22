@@ -1,5 +1,5 @@
 import TextField from "@mui/material/TextField";
-import "../../styles/headerTopBar.css";
+import "./headerTopBar.css";
 
 export default function HeaderTopBar() {
 	return (
