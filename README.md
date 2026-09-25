@@ -6,15 +6,17 @@ Uma coleção de componentes React criada para praticar formulários, props, com
 
 ## 📋 Sobre o Repositório
 
-Este repositório reúne componentes React desenvolvidos durante os estudos. A aplicação exibe uma barra superior, cards de postagem e um formulário de cadastro na mesma página.
+Este repositório reúne componentes React desenvolvidos durante os estudos. A aplicação exibe uma barra superior, cards de postagem, um blog com criação de posts e um formulário de cadastro na mesma página.
 
-O foco principal é praticar a estrutura de componentes, o gerenciamento de estado com `useState`, a passagem de props e a validação de dados.
+O foco principal é praticar a estrutura de componentes, o gerenciamento de estado com `useState`, a passagem de props, a validação de dados e a renderização dinâmica de conteúdo salvo localmente.
 
 **Tipos de componentes:**
 
 - Barra superior com logo, busca e links de navegação
 - Card de postagem reutilizável
 - Card de comentário que reutiliza o card de postagem
+- Blog com lista dinâmica de postagens e botão para adicionar novos itens
+- Modal de criação de post com formulário de autor, título e descrição
 - Formulário de cadastro com validação de email e senha
 
 ---
@@ -23,18 +25,19 @@ O foco principal é praticar a estrutura de componentes, o gerenciamento de esta
 
 ```
 react-components/
-├── public/
-│   ├── favicon.svg
-│   └── icons.svg
 ├── src/
 │   ├── components/
-│   │   ├── commentaryCard/
+│   │   ├── blogContent/
+│   │   │   ├── data.js
 │   │   │   └── index.jsx
 │   │   ├── headerTopBar/
 │   │   │   ├── headerTopBar.css
 │   │   │   └── index.jsx
 │   │   ├── loginCard/
 │   │   │   ├── loginCard.css
+│   │   │   └── index.jsx
+│   │   ├── newPostModal/
+│   │   │   ├── newPostModal.css
 │   │   │   └── index.jsx
 │   │   └── PostCard/
 │   │       ├── postCard.css
@@ -128,6 +131,52 @@ Cria uma postagem de exemplo com autor, título e texto longo. Em seguida, passa
 - **Cores:** usa o design do `PostCard`: `beige` · `#000000`
 - **Fonte:** fonte padrão do navegador; nenhuma fonte customizada foi definida.
 - **Personalidade:** demonstrativo, textual, reutilizável
+
+### BlogContent
+
+**Descrição**
+
+Controla a lista de postagens do blog, abre o modal para criar um novo post e renderiza os itens vindos do estado local. Os posts também são salvos no `localStorage`, então a lista permanece disponível ao recarregar a página.
+
+**O que foi praticado**
+
+- Como usar `useState` para controlar o estado de abertura do modal e da lista de posts
+- Como salvar e recuperar dados no `localStorage`
+- Como atualizar a interface quando novos dados são adicionados
+
+**Propriedades do componente**
+
+- **Props:** não recebe props.
+- **Estado:** `isOpen` controla se o modal está visível; `postBlog` guarda a lista de publicações.
+
+**Design**
+
+- **Cores:** `beige` · `#000000` · `gray`
+- **Fonte:** fonte padrão do navegador; nenhuma fonte customizada foi definida.
+- **Personalidade:** funcional, dinâmico, organizacional
+
+### NewPostModal
+
+**Descrição**
+
+Exibe um formulário em modal para adicionar um novo post com autor, título e texto. Ao enviar, os dados são enviados para o componente pai, que cria a publicação e atualiza o blog.
+
+**O que foi praticado**
+
+- Como controlar inputs de texto com `useState`
+- Como trabalhar com um formulário em modal
+- Como enviar dados para o componente pai por meio de callbacks
+
+**Propriedades do componente**
+
+- **Props:** `isOpen: boolean`, `onClose: function`, `onSave: function`
+- **Estado:** `author`, `title` e `description` controlam os valores digitados no formulário.
+
+**Design**
+
+- **Cores:** `beige` · `#000000` · `gray`
+- **Fonte:** fonte padrão do navegador; nenhuma fonte customizada foi definida.
+- **Personalidade:** direto, funcional, discreto
 
 ### LoginCard
 
