@@ -1,3 +1,0 @@
-1. criar componente para o postCard
-2. criar um array para os post cadastrados (POST=[{id, author, timestamp, tittle, content}]) e renderizar eles dentro de outro componente (ex: blogContent)
-3. criar um outro componente para criar um novo post (formulario passando o obj{id, author, timestamp, tittle, content} para o componente blogContent)
