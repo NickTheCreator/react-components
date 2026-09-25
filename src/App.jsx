@@ -8,9 +8,9 @@ function App() {
 	return (
 		<div className="components--container">
 			<HeaderTopBar />
+			<LoginCard />
 			<PostCard />
 			<BlogContent />
-			<LoginCard />
 		</div>
 	);
 }
