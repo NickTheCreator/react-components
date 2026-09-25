@@ -57,7 +57,12 @@ export default function NewPostModal({ isOpen, onClose, onSave }) {
 					</button>
 					<button
 						type="button"
-						onClick={onClose}
+						onClick={() => {
+							onClose();
+							setAuthor("");
+							setTitle("");
+							setDescription("");
+						}}
 					>
 						Cancelar
 					</button>
